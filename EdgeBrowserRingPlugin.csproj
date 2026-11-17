@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Loupedeck.EdgeBrowserRingPlugin</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\$(Configuration)\bin\</OutputPath>
+    <PluginApiDir Condition="'$(PluginApiDir)' == ''">$(ProgramW6432)\Logi\LogiPluginService</PluginApiDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PluginApi">
+      <HintPath>$(PluginApiDir)\PluginApi.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UIAutomationClient">
+      <HintPath>$(PluginApiDir)\UIAutomationClient.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <HintPath>$(PluginApiDir)\UIAutomationTypes.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <PackageFiles Include="metadata\**\*;profiles\**\*;actionicons\**\*;actionsymbols\**\*" />
+  </ItemGroup>
+  <Target Name="StagePackageFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(PackageFiles)" DestinationFiles="@(PackageFiles->'$(OutputPath)..\%(Identity)')" />
+  </Target>
+</Project>
+
+

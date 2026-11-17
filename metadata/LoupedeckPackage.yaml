@@ -1,0 +1,13 @@
+type: plugin4
+name: EdgeBrowserRing
+displayName: Edge Browser Ring
+version: 1.0.0
+description: Tab and page navigation for Microsoft Edge on Windows.
+author: bruce jiang
+supportPageUrl: https://github.com/Bruce-JCL/edge-browser-ring/issues
+minimumLoupedeckVersion: 6.4
+pluginFileName: EdgeBrowserRingPlugin.dll
+pluginFolderWin: bin
+pluginCapabilities:
+- HasApplication
+- ActivatesApplication
